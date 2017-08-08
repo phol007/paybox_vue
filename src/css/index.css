@@ -1,0 +1,93 @@
+.navbar {
+  border-bottom: 5px solid gray;
+  background: #ebebe0;
+}
+
+.head-left {
+  width: 20%;
+  float: left;
+  padding: 0.5% 0 0 2%;
+}
+
+.head-left img {
+  width: 25%;
+}
+
+.head-right {
+  width: 80%;
+  font-size: 40px;
+  float: right;
+  text-align: right;
+  /*border: 1px solid red;*/
+}
+
+.container {
+  text-align: center;
+  background: #fff;
+}
+
+.title {
+  margin-top: 1%;
+  margin-bottom: 0;
+  font-weight: bold;
+  font-size: 40px;
+}
+
+.menu-c {
+  /*border: 2px solid red;*/
+  height: 260px;
+  overflow: auto;
+}
+
+.bt_menu {
+  width: 200px;
+  height: 200px;
+  margin: 0% 1% 2% 1%;
+  text-align: center;
+  background: #fff;
+  border-radius: 10px;
+}
+
+.bt_menu img {
+  width: 70%;
+}
+
+.bt_menu h1 {
+  width: 100%;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.fot {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  background: #ebebe0;
+  border-top: 5px gray solid;
+}
+
+.fot marquee {
+  font-size: 20px;
+  font-weight: bold;
+  padding: 1% 0;
+  color: #42a003;
+}
+
+.fot .fstatus {
+  width: 20%;
+  float: left;
+  padding-left:2%;
+}
+
+#lang_bar {
+  bottom: 0;
+  width: 100%;
+  position: fixed;
+}
+
+.lang {
+  width: 5%;
+  border-radius: 50%;
+  cursor: pointer;
+}
