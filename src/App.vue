@@ -3,7 +3,7 @@
 
     <nav class="navbar">
       <div class="head-left">
-        <img src="./assets/logo_paybox.png">
+          <img src="./assets/logo_paybox.png">
       </div>
       <div class="head-right">
         <span>Time {{ time }} น.</span>

@@ -5,8 +5,10 @@ import App from './App'
 import router from './router'
 import 'bulma/css/bulma.css'
 import './css/index.css'
+import VueNativeSock from 'vue-native-websocket'
 
 Vue.config.productionTip = false
+Vue.use(VueNativeSock, 'ws://localhost:8888/web', { format: 'json' })
 
 /* eslint-disable no-new */
 new Vue({

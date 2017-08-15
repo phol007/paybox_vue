@@ -4,7 +4,7 @@ export default {
   data() {
     return {
       item_datas: [],
-      item_list: [],
+      item_lists: [],
       langID: 0
     }
   },
@@ -30,7 +30,7 @@ export default {
               this.$router.push('/')
             } else {
               for (var r = 0; r < items.items.length; r++) {
-                this.item_list.push({ id: r, item_code: items.items[r].Id, name: items.items[r].name, img: 'http://localhost:8888/public/img/' + items.items[r].image })
+                this.item_lists.push({ id: r, item_code: items.items[r].Id, name: items.items[r].name, img: this.image(items.items[r].image) })
               }
             }
 
@@ -39,12 +39,23 @@ export default {
       } else {
         this.getApi(1)
       }
+    },
+    send () {
+      this.$router.push('/')
+      this.$socket.sendObj({Device:"host",type:"request",command:"onhand"})
+    },
+    image (name) {
+      return require('../assets/item/'+name)
     }
   },
-  mounted() {
+  mounted () {
     this.item_datas = []
     var data = this.$route.params.menu
     var lang = this.$route.params.langID
-    this.getApi(lang, data.menu_code)
+    if(data){
+     this.getApi(lang, data.menu_code)
+    }else{
+      this.$router.push('/')
+    }
   }
 }

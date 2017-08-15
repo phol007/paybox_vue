@@ -8,10 +8,15 @@ export default {
     }
   },
   methods: {
+    websocket_onmessage() {
+      this.$options.sockets.onmessage = (skResult) =>
+        console.log(skResult.data)
+    }
   },
   mounted() {
-     setInterval(function () {
+    setInterval(function() {
       this.time = moment(new Date()).format('h:mm:ss')
     }.bind(this), 1000)
+    this.websocket_onmessage()
   }
 }
