@@ -1,3 +1,12 @@
+@font-face {
+  font-family: 'RSU_BOLD';
+  src: url('font_page/RSU_BOLD.ttf');
+}
+
+* {
+  font-family: 'RSU_BOLD'
+}
+
 .navbar {
   border-bottom: 5px solid gray;
   background: #ebebe0;
@@ -10,12 +19,13 @@
 }
 
 .head-left img {
-  width: 100px;
+  width: 90px;
   position: absolute;
   background: #ebebe0;
-  border-radius: 0 0 50% 50%;
+  border-radius: 0 0 50% 0%;
   left: 0;
-  padding: 0.5%;
+  top:0;
+  padding: 0.2% 0.5%;
   border-bottom: 5px solid gray;
 }
 
@@ -31,6 +41,8 @@
   text-align: center;
   background: #fff;
   position: static;
+  padding-left: 5%;
+  padding-right: 5%;
 }
 
 .title {
@@ -61,28 +73,51 @@
 
 .bt_menu h1 {
   width: 100%;
-  font-size: 20px;
+  font-size: 30px;
   font-weight: bold;
+  margin-top: 3%;
 }
 
 .item_menu {
-  width: 150px;
-  height: 150px;
+  width: 200px;
+  height: 200px;
   font-weight: bold;
   float: left;
-  margin: 2%;
-  position: static;
+  margin: 2% 1.6%;
+  position: relative;
+  border-radius: 0 0 9px 9px;
+  /*border: 1px solid black;*/
 }
-  .item_menu img {
+  .imgitem {
+    /*border: 1px solid blue;*/
     width: 100%;
-    position: static;
+    height: 150px;
+    position: absolute;
+    padding: 0.5%;
+    border-radius: 0 0 9px 9px;
   }
-  .item_menu h1 {
-    font-weight: bold;    
-    font-size: 20px;
-    top: 0;
-    border: 1px red solid;
+
+  .imgitem img {    
+    border-radius: 0 0 9px 9px;
+  }  
+
+  .Nitem {
+    /*border: 1px solid red;*/
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    background: #e8eaed;
+    position: absolute;
+    bottom: 0;
+    padding: 2%;
+    border-top: 0;
+    word-wrap:break-word;
+    border-radius: 0 0 9px 9px;
   }
+    .Nitem h1 {
+      font-weight: bold;
+      font-size: 25px;
+    }
 
 .fot {
   position: fixed;
@@ -116,4 +151,17 @@
   width: 5%;
   border-radius: 50%;
   cursor: pointer;
+}
+
+.back {
+  position: absolute;
+  background: #bc0d30;
+  width: 90px;
+  height: 90px;
+  top:0;
+  border-radius: 50%;
+  border: 10px double #fff;
+  font-size: 90px;
+  line-height: 20px;
+  color: #fff;
 }

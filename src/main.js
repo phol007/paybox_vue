@@ -5,6 +5,8 @@ import App from './App'
 import router from './router'
 import 'bulma/css/bulma.css'
 import './css/index.css'
+import './css/payment.css'
+import 'font-awesome/css/font-awesome.css'
 import VueNativeSock from 'vue-native-websocket'
 
 Vue.config.productionTip = false

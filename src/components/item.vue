@@ -1,9 +1,18 @@
 <template>
-  <div class="items">
+  <div class="items">  
+  	 <button class="back" @click="backHome">
+  	 	<span class="icon icon is-large">
+		  <i class="fa fa-arrow-left"></i>
+		</span>
+  	 </button>
   	<div class="container">
-	 <div class="item_menu" v-for="items in item_lists">
-	 	<img :src="items.img">
-	 	<h1>items.name</h1>
+	 <div class="item_menu" v-for="items in item_lists" @click="send(items)">
+	 	<div class="imgitem">
+	 		<img :src="items.img">
+	 	</div>
+	 	<div class="Nitem">
+	 		<h1>{{ items.name }}</h1>
+	 	</div>
 	 </div>
 	</div>
   </div>

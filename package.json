@@ -16,10 +16,12 @@
   "dependencies": {
     "axios": "^0.16.2",
     "bulma": "^0.5.1",
+    "font-awesome": "^4.7.0",
     "moment": "^2.18.1",
     "text-to-speech-js": "^1.1.6",
     "vue": "^2.3.3",
     "vue-axios": "^2.0.2",
+    "vue-fontawesome": "0.0.2",
     "vue-native-websocket": "^2.0.3",
     "vue-router": "^2.6.0",
     "vue-websocket": "^0.2.2"

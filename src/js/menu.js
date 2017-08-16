@@ -72,7 +72,6 @@ export default {
       }
     },
     getMenuToitem (menu) {
-      console.log(JSON.stringify(menu))
       this.$router.push({ name: "items", params: { menu: menu, langID: this.langID } })
     }
   },

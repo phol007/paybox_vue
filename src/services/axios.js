@@ -15,7 +15,6 @@ export default {
       })
   },
   getItemAX (menuID, success, error) {
-    console.log('http://localhost:8888/menu/' + menuID + '/')
     Vue.axios.get('http://localhost:8888/menu/' + menuID + '/').then(
       (response) => {
         success(response.data)

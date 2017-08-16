@@ -2,6 +2,20 @@
 
 > version dev on ubuntu
 
+## framework css
+```
+# font awesome
+npm install font-awesome --save
+import 'font-awesome/css/font-awesome.css'
+
+# bulma
+npm install bulma --save
+import 'bulma/css/bulma.css'
+```
+
+## framework call websocket
+npm install vue-native-websocket --save
+
 ## Build Setup
 
 ``` bash

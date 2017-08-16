@@ -5,7 +5,8 @@ export default {
     return {
       item_datas: [],
       item_lists: [],
-      langID: 0
+      langID: 0,
+      old_menu: []
     }
   },
   methods: {
@@ -30,7 +31,7 @@ export default {
               this.$router.push('/')
             } else {
               for (var r = 0; r < items.items.length; r++) {
-                this.item_lists.push({ id: r, item_code: items.items[r].Id, name: items.items[r].name, img: this.image(items.items[r].image) })
+                this.item_lists.push({ id: r, item_code: items.items[r].Id, name: items.items[r].name, img: this.image(items.items[r].image), type_list: items.items[r].prices })
               }
             }
 
@@ -40,20 +41,23 @@ export default {
         this.getApi(1)
       }
     },
-    send () {
-      this.$router.push('/')
-      this.$socket.sendObj({Device:"host",type:"request",command:"onhand"})
+    send (items) {
+      this.$router.push({ name: "payment", params: { items: items, langID: this.langID, oldMenu: this.old_menu } })
+      //this.$socket.sendObj({Device:"host",type:"request",command:"onhand"})
     },
     image (name) {
       return require('../assets/item/'+name)
+    },
+    backHome () {
+      this.$router.push('/')
     }
   },
   mounted () {
     this.item_datas = []
-    var data = this.$route.params.menu
+    this.old_menu = this.$route.params.menu
     var lang = this.$route.params.langID
-    if(data){
-     this.getApi(lang, data.menu_code)
+    if(this.old_menu){
+     this.getApi(lang, this.old_menu.menu_code)
     }else{
       this.$router.push('/')
     }
