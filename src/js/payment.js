@@ -1,4 +1,7 @@
 import api from '../services/axios.js'
+import numeral from 'numeral'
+import $ from 'jquery'
+
 export default {
   name: 'payment',
   data () {
@@ -7,10 +10,12 @@ export default {
       img: '',
       choice: [],
       netAmount: 0,
+      netPayment: 0,
       cnt: 1,
       price: 0,
       oldMenu: [],
-      langID: 0
+      langID: 0,
+      PMC: 'bt-cancel'
     }
   },
   methods: {
@@ -55,15 +60,43 @@ export default {
       }
       this.total_bill()
     },
+    send_payment () {
+      $(".modal").addClass("is-active")
+      this.$socket.sendObj({Device:"host",type:"request",command:"onhand"})
+    },
+    bill_netAmount (payment) {
+      this.netAmount -= payment
+      this.netPayment += payment
+      if(this.netPayment!=0){
+        this.PMC = 'bt-cancel disabled'
+      }
+    },
+    close_modal () {
+      $(".modal").removeClass("is-active")
+    },
     back_item () {
       this.$router.push({ name: 'items', params: { menu: this.oldMenu, langID: this.langID }})
+    },
+    Format_money (int) {
+      return numeral(int).format('0,0')
+    },
+    websocket_onmessage() {
+      this.$options.sockets.onmessage = (skResult) =>
+        this.event_sk(JSON.parse(skResult.data))
+
+    },
+    event_sk (data) {
+      switch(data.command){
+          case 'onhand' : this.bill_netAmount(data.data)
+                          break
+        }
     }
   },
   mounted () {
     var items = this.$route.params.items
     this.langID = this.$route.params.langID
     this.oldMenu = this.$route.params.oldMenu
-
+    this.websocket_onmessage()
     if (items) { 
       this.showDetail(items, this.langID)
       this.select_type(0)

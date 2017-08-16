@@ -174,3 +174,127 @@
 			border-radius: 10px;
 			font-size: 50px;
 		}
+
+/*  modal  */
+.modal-content {
+	background: #fff;
+	height: 100%;
+	border-radius: 10px;
+	padding: 2%;
+	overflow: hidden;
+}
+
+	.md-left {
+		/*border: 1px solid blue;*/
+		height: 100%;
+		width: 40%;
+		float: left;
+	}
+		.md-left u {
+			font-size: 24px;
+			font-weight: bolder;
+			text-decoration-style: double;
+		}
+		.md-left img {
+			width: 70%;
+			height: 80px;
+			margin-left: 15%;
+			margin-bottom: 0;
+		}
+
+	.md-right {
+		/*border: 1px solid red;*/
+		height: 100%;
+		width: 60%;
+		float: left;
+	}
+		.md-right .netAmt {
+			/*border: 1px solid green;*/
+			width: 100%;
+			height: 150px;
+		}
+			.md-right .netAmt span {
+				font-size: 50px;
+				line-height: 50px;
+				margin-left: 5%;
+			}
+			.md-right .mn {
+				width: 100%;
+				height: 90px;
+				background: #000;
+				border-radius: 9px;
+				border: 5px solid red;
+				font-size: 90px;
+				font-weight: bold;
+				color: #fff;
+				padding: 0;
+				line-height: 85px;
+				text-align: right;
+			}
+		.md-right .paymentAmt {
+			/*border: 1px solid orange;*/
+			width: 100%;
+			height: 150px;
+		}
+			.md-right .paymentAmt span {
+				font-size: 50px;
+				line-height: 50px;
+				margin-left: 5%;
+			}
+
+		.md-right .cancel {
+			/*border: 1px solid red;*/
+			width: 100%;
+			height: 100px;
+		}
+			.md-right .cancel .bt-cancel {
+				background: red;
+				color: #fff;
+				width: 96%;
+				margin: 0 2% 2% 2%;
+				float: left;
+				font-size: 50px;
+				height: 100%;
+				font-family: 'RSU_BOLD';
+				border-radius: 10px;
+			}
+
+			.md-right .cancel .disabled {
+				background: #f79b9b;
+				color: #fff;
+				width: 96%;
+				margin: 0 2% 2% 2%;
+				float: left;
+				font-size: 50px;
+				height: 100%;
+				font-family: 'RSU_BOLD';
+				border-radius: 10px;
+			} 
+
+		.md-right .coinuse {
+			/*border: 1px solid yellow;*/
+			width: 100%;
+			height: 120px;
+		}
+			.md-right .coinuse u {
+				width: 100%;
+				font-size: 24px;
+				font-weight: bolder;
+				text-decoration-style: double;
+			}
+			.md-right .coinuse .c1 {
+				margin: 0 0 8% 15%;
+				/*border: 1px solid red;*/
+				width: 60px;
+			}
+			.md-right .coinuse .c5 {
+				margin: 0 0 6% 5%;
+				/*border: 1px solid red;*/
+				width: 70px;
+			}
+			.md-right .coinuse .c10 {
+				margin: 0 0 5% 5%;
+				/*border: 1px solid red;*/
+				width: 80px;
+			}
+		

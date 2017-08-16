@@ -43,7 +43,6 @@ export default {
     },
     send (items) {
       this.$router.push({ name: "payment", params: { items: items, langID: this.langID, oldMenu: this.old_menu } })
-      //this.$socket.sendObj({Device:"host",type:"request",command:"onhand"})
     },
     image (name) {
       return require('../assets/item/'+name)

@@ -9,7 +9,7 @@
 	 			<img :src="img">
 	 		</div>
 	 		<div class="PnetA">
-	 			{{  netAmount }} ฿
+	 			{{  Format_money(netAmount) }} ฿
 	 		</div>
 	 	</div>
 	 	<div class="payment-right">
@@ -33,12 +33,55 @@
 	 			<button class="cancel" @click="back_item">
 	 				ย้อนกลับ
 	 			</button>
-	 			<button class="success">
+	 			<button class="success" @click="send_payment">
 	 				ชำระเงิน
 	 			</button>
 	 		</div>
 	 	</div>
 	</div>
+<!-- modal payment -->
+	<div class="modal">
+	  <div class="modal-background"></div>
+	  <div class="modal-content">
+	    
+	    <div class="md-left">
+	    	<u>ธนบัตรที่ชำระได้ </u> <hr style="margin: 2% 5% 5% 5%; width:90%;">
+	    	<img src="../assets/money/b1000_true.png">
+	    	<img src="../assets/money/b500_true.png">
+	    	<img src="../assets/money/b100_true.png">
+	    	<img src="../assets/money/b50_true.png">
+	    	<img src="../assets/money/b20_true.png">
+	    </div>
+		<div class="md-right">
+			<div class="netAmt">
+				<span>ยอดค้างชำระ</span>
+				<div class="mn">
+					{{  Format_money(netAmount) }} ฿
+				</div>
+			</div>
+			<div class="paymentAmt">
+				<span>ยอดชำระ</span>
+				<div class="mn">
+					{{  Format_money(netPayment) }} ฿
+				</div>
+			</div>
+			<div class="cancel">
+				<button @click="close_modal" :class="PMC" :disabled="netPayment!=0">
+	 				ยกเลิก
+	 			</button>
+			</div>
+			<div class="coinuse">
+				<u>เหรียญที่ชำระได้ </u> <br>
+				<img src="../assets/money/c1.png" class="c1">
+				<img src="../assets/money/c5.png" class="c5">
+				<img src="../assets/money/c10.png" class="c10">
+			</div>
+		</div>
+
+	  </div>
+	</div>
+<!-- close modal payment -->
+
   </div>
 </template>
 

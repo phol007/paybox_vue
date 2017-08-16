@@ -4,7 +4,8 @@ export default {
   name: 'app',
   data() {
     return {
-      time: ''
+      time: '',
+      data_socket: {}
     }
   },
   methods: {

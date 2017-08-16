@@ -11,6 +11,14 @@ import 'font-awesome/css/font-awesome.css'
 # bulma
 npm install bulma --save
 import 'bulma/css/bulma.css'
+
+# JQuery
+npm install jquery --save-dev
+import $ from 'jquery'
+
+# numeral
+npm install numeral --save
+import numeral from 'numeral'
 ```
 
 ## framework call websocket
