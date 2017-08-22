@@ -6,7 +6,7 @@
 ```
 # font awesome
 npm install font-awesome --save
-import 'font-awesome/css/font-awesome.css'
+import '../node_modules/font-awesome/css/font-awesome.css'
 
 # bulma
 npm install bulma --save
