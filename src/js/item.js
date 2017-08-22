@@ -31,10 +31,14 @@ export default {
               this.$router.push('/')
             } else {
               for (var r = 0; r < items.items.length; r++) {
-                this.item_lists.push({ id: r, item_code: items.items[r].Id, name: items.items[r].name, img: this.image(items.items[r].image), type_list: items.items[r].prices })
+                try {
+                  this.item_lists.push({ id: r, item_code: items.items[r].Id, name: items.items[r].name, img: this.image(items.items[r].image), type_list: items.items[r].prices })
+                } catch (e) { 
+                  this.item_lists.push({ id: r, item_code: items.items[r].Id, name: items.items[r].name, img: this.image('noItem.gif'), type_list: items.items[r].prices })
+                  console.log(e) 
+                }                
               }
             }
-
           }
         }
       } else {
