@@ -11,7 +11,7 @@ export default {
   },
   methods: {
     getApi(langID, menuID) {
-      api.getItemAX(menuID, (data) => {
+      api.getItemAX (menuID, (data) => {
         this.item_datas = data
         this.langID = langID
         this.selectMenu(langID)
@@ -31,7 +31,7 @@ export default {
               this.$router.push('/')
             } else {
               for (var r = 0; r < items.items.length; r++) {
-                this.item_lists.push({ id: r, item_code: items.items[r].Id, name: items.items[r].name, img: this.image(items.items[r].image), type_list: items.items[r].prices })
+                this.item_lists.push({ id: r, item_code: items.items[r].Id, name: items.items[r].name, unit: items.items[r].unit, img: this.image(items.items[r].image), type_list: items.items[r].prices })
               }
             }
 

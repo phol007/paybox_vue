@@ -7,21 +7,31 @@ export default {
   data () {
     return {
       itemname: '',
+      itemID: 0,
       img: '',
       choice: [],
       netAmount: 0,
       netPayment: 0,
       cnt: 1,
+      choice_ID: 0,
+      choice_name: '',
       price: 0,
+      unit: '',
       oldMenu: [],
       langID: 0,
-      PMC: 'bt-cancel'
+      PMC: 'bt-cancel',
+      payload: {},
+      test_totalbill: 0,
+      TPsuccess: ''
     }
   },
   methods: {
     showDetail (item, lang) {
+      // console.log(item)
       this.itemname = item.name
+      this.itemID = item.item_code
       this.img = item.img
+      this.unit = item.unit
       var type_list = item.type_list
       for(var i = 0; i < type_list.length; i++){
         switch (lang){
@@ -54,6 +64,8 @@ export default {
         if(r == inD){
           this.choice[r].isActive = true
           this.price = this.choice[r].price
+          this.choice_name = this.choice[r].name
+          this.choice_ID = this.choice[r].id
         }else{
           this.choice[r].isActive = false
         }
@@ -61,17 +73,86 @@ export default {
       this.total_bill()
     },
     send_payment () {
-      $(".modal").addClass("is-active")
-      this.$socket.sendObj({Device:"host",type:"request",command:"onhand"})
+      $("#payment-onhand").addClass("is-active")
+      this.payload = {
+                      total: this.netAmount,
+                      type: 'coffee',
+                      sale_subs: [{
+                                    line: 0,
+                                    item_id: this.itemID,
+                                    item_name: this.itemname,
+                                    qty: this.cnt,
+                                    price_id: this.choice_ID,
+                                    price_name: this.choice_name,
+                                    price: this.price,
+                                    unit: this.unit
+                                  }]
+                      }
+      this.test_payment(this.payload)
+     
+      // var login = {companyCode: "np", appCode: "NpInventory", saleCode: '56163', password: '56163'}
+      // api.sendOrderAX (this.payload, 
+      // (result) => {
+      //   // this.$socket.sendObj({Device:"host",type:"request",command:"onhand"})    
+      //   console.log(result)
+      // }, (response) => {
+      //   console.log(JSON.stringify(response))
+      //   alert("API sale error"+ response)
+      // })
     },
-    bill_netAmount (payment) {
-      this.netAmount -= payment
-      this.netPayment += payment
-      if(this.netPayment!=0){
+    bill_netAmount (payment) { 
+      console.log("billAmount "+this.payload.total)
+      this.netAmount = this.payload.total - payment
+      this.netPayment = payment
+      
+      if(this.netAmount <= 0){
+        this.PMC = 'bt-cancel disabled' 
+        if(this.netAmount >= 0){          
+          this.TPsuccess = 'กรุณารอรับใบเสร็จรับเงิน'
+        }else{
+          this.TPsuccess = 'กรุณารอรับใบเสร็จรับเงินและเงินทอน '+ Math.abs(this.netAmount) + ' บาท'
+        }
+        this.show_cm()
+        console.log('ทอนเงิน '+Math.abs(this.netAmount)+', netPayment '+this.netPayment)
+      }else{
         this.PMC = 'bt-cancel disabled'
+        console.log('เพิ่มเงิน '+this.netAmount+', netPayment '+this.netPayment)
+        return false
+      }
+
+    },
+    show_cm () {
+          $('#payment-onhand').removeClass('is-active')
+          $('#payment-success').addClass('is-active')
+    },
+    test_payment (payload) {
+      var payment = 20
+      var r = Math.ceil(payload.total/payment)
+      var netPayment = 0
+      var p = 0;
+      var test = setInterval(function() {
+        netPayment += payment 
+        if(r==p){
+          this.event_sk({command: 'print', data: 'success'})
+          clearInterval(test)
+        }else{          
+          this.event_sk({command: 'onhand', data: netPayment})
+        }        
+        p++;
+      }.bind(this), 3000)
+    },
+    payment_sucess (data) {
+      if(data=='success'){                
+        this.netAmount = 0
+        this.netPayment = 0
+        this.payload = []
+        $('#payment-success').removeClass('is-active')
+        this.$router.push('/')
       }
     },
     close_modal () {
+      var cancel = {device:"host",type:"request",command:"cancel"}
+      this.$socket.sendObj(cancel)
       $(".modal").removeClass("is-active")
     },
     back_item () {
@@ -82,12 +163,14 @@ export default {
     },
     websocket_onmessage() {
       this.$options.sockets.onmessage = (skResult) =>
-        this.event_sk(JSON.parse(skResult.data))
-
+      this.event_sk(JSON.parse(skResult.data))
     },
     event_sk (data) {
+      console.log(data)
       switch(data.command){
           case 'onhand' : this.bill_netAmount(data.data)
+                          break
+          case 'print'  : this.payment_sucess(data.data)
                           break
         }
     }

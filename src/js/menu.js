@@ -13,7 +13,7 @@ export default {
   },
   methods: {
     getApi (langID) {
-      api.getMenuAX((data) => {
+      api.getMenuAX ((data) => {
         this.menu_datas = data
         this.langID = langID
         this.selectMenu(langID)
@@ -77,5 +77,6 @@ export default {
   },
   mounted () {
     this.selectMenu(1)
+    console.log('===================ready==========================')
   }
 }

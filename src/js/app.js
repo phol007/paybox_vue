@@ -2,16 +2,23 @@ import moment from 'moment'
 
 export default {
   name: 'app',
-  data() {
+  data () {
     return {
       time: '',
-      data_socket: {}
+      data_socket: {},
+      sale: 0
     }
   },
   methods: {
     websocket_onmessage() {
       this.$options.sockets.onmessage = (skResult) =>
-        console.log(skResult.data)
+        this.userTest_sale(JSON.parse(skResult.data))
+    },
+    userTest_sale (data) {
+      switch(data.command){
+          case 'print'  : this.sale += 1
+                          break
+        }
     }
   },
   mounted() {

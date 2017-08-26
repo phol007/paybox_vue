@@ -1,15 +1,16 @@
 @font-face {
   font-family: 'RSU_BOLD';
-  src: url('font_page/RSU_BOLD.ttf');
+  src: url('../fonts/RSU_BOLD.ttf');
 }
 
-* {
+html, body, * {
   font-family: 'RSU_BOLD'
 }
 
 .navbar {
   border-bottom: 5px solid gray;
   background: #ebebe0;
+  font-family: 'RSU_BOLD'
 }
 
 .head-left {

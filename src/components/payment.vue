@@ -13,15 +13,15 @@
 	 		</div>
 	 	</div>
 	 	<div class="payment-right">
-	 		<div class="PRT">
-	 			<div class="PRT-plus">
-	 				<a class="button is-large is-success" @click="addCNT()"> + </a>
+	 		<div class="PRT">	 			
+	 			<div class="PRT-romove">
+	 				<a class="button is-large is-danger" @click="rmCNT()"> - </a>
 	 			</div>
 	 			<div class="PRT-cnt">
 	 				{{ cnt }}
 	 			</div>
-	 			<div class="PRT-romove">
-	 				<a class="button is-large is-danger" @click="rmCNT()"> - </a>
+	 			<div class="PRT-plus">
+	 				<a class="button is-large is-success" @click="addCNT()"> + </a>
 	 			</div>
 	 		</div>
 	 		<div class="PRC">
@@ -40,7 +40,7 @@
 	 	</div>
 	</div>
 <!-- modal payment -->
-	<div class="modal">
+	<div class="modal" id="payment-onhand">
 	  <div class="modal-background"></div>
 	  <div class="modal-content">
 	    
@@ -81,6 +81,16 @@
 	  </div>
 	</div>
 <!-- close modal payment -->
+
+<!--- modal payment success -->
+	<div class="modal" id="payment-success">
+	  <div class="modal-background"></div>
+	  <div class="modal-content" style="text-align:center">
+	    <img src="../assets/status/thankyou.gif" width="150">
+	    <h1>{{ TPsuccess }}</h1>
+	  </div>
+	</div>
+<!-- close modal payment success -->
 
   </div>
 </template>

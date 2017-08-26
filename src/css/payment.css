@@ -298,3 +298,11 @@
 				width: 80px;
 			}
 		
+		#payment-success .modal-content {
+			height: 300px;
+			width: 300px;
+		}
+
+		#payment-success .modal-content h1{
+			font-size: 30px;
+		}

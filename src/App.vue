@@ -14,7 +14,7 @@
 
     <footer class="fot">
       <marquee name="status" style="width:80%; float:left;">
-        ** โปรแกรมพร้อมใช้งานแล้ว
+        ** โปรแกรมพร้อมใช้งานแล้ว [ ทดสอบสั่งซื้อสินค้าไปแล้ว {{ sale }} รายการ ]
       </marquee>
       <div class="fstatus">
         <img src="./assets/status/3g.png" width="30" style="margin: 2% 5%;">
