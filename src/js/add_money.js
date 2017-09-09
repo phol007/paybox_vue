@@ -35,8 +35,15 @@ export default {
 						 document.getElementsByClassName('rm-QTY')[index].style.display = 'block'
 				  break
 			}
+			setTimeout(function(){
+				this.stopSound()
+			}.bind(this), 200)
 		},
 		rm_QTY (index) {
+			this.Soundclick()
+			setTimeout(function(){
+				this.stopSound()
+			}.bind(this), 200)
 			switch (index) {
 				case 0 : if(this.QT1 != 0){this.QT1 -= 1; this.addMachine -= 1000}
 						 if(this.QT1==0){
@@ -80,6 +87,10 @@ export default {
 			return numeral(int).format("0,0.00")
 		},
 		save_data () {
+			this.Soundclick()
+			setTimeout(function(){
+				this.stopSound()
+			}.bind(this), 200)
 			this.onMachine += this.addMachine
 			this.QT1 = 0
 			this.QT2 = 0
@@ -102,8 +113,18 @@ export default {
 			)
 		},
 		Soundclick () {
-			this.$refs.audioElm.play()
-		}
+			var audio = document.getElementById("audio")
+       		audio.play()
+		},
+	    stopSound () {
+	      var audio = document.getElementById("audio")
+	          audio.currentTime = 0
+	    }
+	},
+	beforeDestroy () {
+	  return {
+	    sockets: null
+	  }
 	},
 	mounted () {
 

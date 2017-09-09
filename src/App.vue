@@ -7,6 +7,7 @@
       </div>
       <div class="head-right">
         <span>Time {{ time }} น.</span>
+        <audio id="audio" :src="file1" ></audio>
       </div> 
     </nav>
     <router-view></router-view>

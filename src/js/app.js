@@ -7,7 +7,8 @@ export default {
     return {
       time: '',
       data_socket: {},
-      sale: 0
+      sale: 0,
+      file1: require('../assets/sound/sound_click.mp3')
     }
   },
   methods: {
@@ -37,7 +38,15 @@ export default {
     },
     gotoSetting () {
       this.$router.push('/setting')
-      this.closeModal
+      this.closeModal()
+    },
+    Soundclick () {
+      var audio = document.getElementById("audio")
+          audio.play()
+    },
+    stopSound () {
+      var audio = document.getElementById("audio")
+          audio.currentTime = 0
     }
   },
   beforeDestroy () {

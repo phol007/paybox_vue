@@ -53,6 +53,19 @@ export default {
     },
     backHome () {
       this.$router.push('/')
+    },
+    Soundclick () {
+      var audio = document.getElementById("audio")
+          audio.play()
+    },
+    stopSound () {
+      var audio = document.getElementById("audio")
+          audio.currentTime = 0
+    }
+  },
+  beforeDestroy () {
+    return {
+      sockets: null
     }
   },
   mounted () {

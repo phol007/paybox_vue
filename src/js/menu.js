@@ -72,7 +72,21 @@ export default {
       }
     },
     getMenuToitem (menu) {
+      this.Soundclick()
       this.$router.push({ name: "items", params: { menu: menu, langID: this.langID } })
+    },
+    Soundclick () {
+      var audio = document.getElementById("audio")
+          audio.play()
+    },
+    stopSound () {
+      var audio = document.getElementById("audio")
+          audio.currentTime = 0
+    }
+  },
+  beforeDestroy () {
+    return {
+      sockets: null
     }
   },
   mounted () {
