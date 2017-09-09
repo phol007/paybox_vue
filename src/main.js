@@ -8,9 +8,11 @@ import './css/index.css'
 import './css/payment.css'
 import 'font-awesome/css/font-awesome.css'
 import VueNativeSock from 'vue-native-websocket'
+import Touch from 'vue-touchjs'
 
 Vue.config.productionTip = false
 Vue.use(VueNativeSock, 'ws://localhost:8888/web', { format: 'json' })
+Vue.use(Touch)
 
 /* eslint-disable no-new */
 new Vue({

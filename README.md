@@ -19,6 +19,10 @@ import $ from 'jquery'
 # numeral
 npm install numeral --save
 import numeral from 'numeral'
+
+# touch event 
+https://www.npmjs.com/package/vue-touchjs
+
 ```
 
 ## framework call websocket
