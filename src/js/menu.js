@@ -72,6 +72,7 @@ export default {
       }
     },
     getMenuToitem (menu) {
+      this.stopSound()
       this.Soundclick()
       this.$router.push({ name: "items", params: { menu: menu, langID: this.langID } })
     },

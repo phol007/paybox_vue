@@ -30,13 +30,19 @@ export default {
       $('#setting').removeClass('is-active')
     },
     addKey (int) {
+      this.stopSound()
+      this.Soundclick()
       document.getElementById('PasswordKey').value += int.toString()
     },
     removeKey () {
+      this.stopSound()
+      this.Soundclick()
       var key = document.getElementById('PasswordKey').value
       document.getElementById('PasswordKey').value = key.substring(key.length-1,0)
     },
     gotoSetting () {
+      this.stopSound()
+      this.Soundclick()
       this.$router.push('/setting')
       this.closeModal()
     },
@@ -54,7 +60,7 @@ export default {
       sockets: null
     }
   },
-  mounted() {
+  mounted () {
     setInterval(function() {
       this.time = moment(new Date()).format('h:mm:ss')
     }.bind(this), 1000)

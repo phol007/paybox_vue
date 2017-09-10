@@ -46,6 +46,8 @@ export default {
       }
     },
     send (items) {
+      this.stopSound()
+      this.Soundclick()
       this.$router.push({ name: "payment", params: { items: items, langID: this.langID, oldMenu: this.old_menu } })
     },
     image (name) {

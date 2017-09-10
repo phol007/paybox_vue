@@ -14,10 +14,20 @@ export default {
 	},
 	methods: {
 		goto (path) {
+			this.stopSound()
+			this.Soundclick()
 			this.$router.push(path)
 		},
 		backHome () {
 			this.$router.push('/')
-		}
+		},
+		Soundclick () {
+			var audio = document.getElementById("audio")
+       		audio.play()
+		},
+	    stopSound () {
+	      var audio = document.getElementById("audio")
+	          audio.currentTime = 0
+	    }
 	}
 }

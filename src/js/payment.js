@@ -45,18 +45,14 @@ export default {
       }
     },
     addCNT () {
+      this.stopSound()
       this.Soundclick()
-      setTimeout(function(){
-        this.stopSound()
-      }.bind(this), 200)
       this.cnt += 1
       this.total_bill()
     },
     rmCNT () {
+      this.stopSound()
       this.Soundclick()
-      setTimeout(function(){
-        this.stopSound()
-      }.bind(this), 200)
       if(this.cnt > 1){
         this.cnt -= 1
       }else{
@@ -68,10 +64,6 @@ export default {
       this.netAmount = this.cnt * this.price
     },
     select_type (inD) {
-      this.Soundclick()
-      setTimeout(function(){
-        this.stopSound()
-      }.bind(this), 200)
       for( var r = 0; r < this.choice.length; r++){
         if(r == inD){
           this.choice[r].isActive = true
@@ -85,10 +77,8 @@ export default {
       this.total_bill()
     },
     send_payment () {
+      this.stopSound()
       this.Soundclick()
-      setTimeout(function(){
-        this.stopSound()
-      }.bind(this), 200)
       $("#payment-onhand").addClass("is-active")
       this.payload = {
                       total: this.netAmount,

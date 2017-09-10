@@ -16,6 +16,7 @@ export default {
 	},
 	methods: {
 		add_QTY (index) {
+			this.stopSound()
 			this.Soundclick()
 			switch (index) {
 				case 0 : if(this.QT1 < 10){this.QT1 += 1; this.addMachine += 1000}else{ alert("ท่านใส่ยอดเงินมากเกินไป!")}
@@ -34,16 +35,11 @@ export default {
 						 document.getElementsByClassName('add-QTY')[index].style.display = 'block'
 						 document.getElementsByClassName('rm-QTY')[index].style.display = 'block'
 				  break
-			}
-			setTimeout(function(){
-				this.stopSound()
-			}.bind(this), 200)
+			}			
 		},
 		rm_QTY (index) {
+			this.stopSound()
 			this.Soundclick()
-			setTimeout(function(){
-				this.stopSound()
-			}.bind(this), 200)
 			switch (index) {
 				case 0 : if(this.QT1 != 0){this.QT1 -= 1; this.addMachine -= 1000}
 						 if(this.QT1==0){
@@ -87,10 +83,8 @@ export default {
 			return numeral(int).format("0,0.00")
 		},
 		save_data () {
+			this.stopSound()
 			this.Soundclick()
-			setTimeout(function(){
-				this.stopSound()
-			}.bind(this), 200)
 			this.onMachine += this.addMachine
 			this.QT1 = 0
 			this.QT2 = 0
