@@ -8,7 +8,8 @@ export default {
       time: '',
       data_socket: {},
       sale: 0,
-      file1: require('../assets/sound/sound_click.mp3')
+      file1: require('../assets/sound/click.mp3'),
+      screen: 'width ' + screen.availWidth + ', height '+ screen.availHeight
     }
   },
   methods: {
@@ -19,7 +20,7 @@ export default {
     userTest_sale (data) {
       switch(data.command){
           case 'print'  : this.sale += 1
-                          break
+            break
         }
     },
     inputPassword () {

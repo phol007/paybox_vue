@@ -22,7 +22,11 @@ export default {
       PMC: 'bt-cancel',
       payload: {},
       test_totalbill: 0,
-      TPsuccess: ''
+      TPsuccess: '',
+      b50: false,
+      b100: false,
+      b500: false,
+      b1000: false
     }
   },
   methods: {
@@ -94,17 +98,17 @@ export default {
                                     unit: this.unit
                                   }]
                       }
-      this.test_payment(this.payload)
+      // this.test_payment(this.payload)
      
-      // var login = {companyCode: "np", appCode: "NpInventory", saleCode: '56163', password: '56163'}
-      // api.sendOrderAX (this.payload, 
-      // (result) => {
-      //   // this.$socket.sendObj({Device:"host",type:"request",command:"onhand"})    
-      //   console.log(result)
-      // }, (response) => {
-      //   console.log(JSON.stringify(response))
-      //   alert("API sale error"+ response)
-      // })
+      // // var login = {companyCode: "np", appCode: "NpInventory", saleCode: '56163', password: '56163'}
+      api.sendOrderAX (this.payload, 
+      (result) => {
+        // this.$socket.sendObj({Device:"host",type:"request",command:"onhand"})    
+        console.log(result)
+      }, (response) => {
+        console.log(JSON.stringify(response))
+        alert("API sale error"+ response)
+      })
     },
     bill_netAmount (payment) { 
       console.log("billAmount "+this.payload.total)
@@ -135,13 +139,32 @@ export default {
       var payment = 20
       var r = Math.ceil(payload.total/payment)
       var netPayment = 0
+      var withdrawal = payload.total
       var p = 0;
+      var bb50 = false
+      var bb100 = false
+      var bb500 = false
+      var bb1000 = false
+
+      if(withdrawal>=50){ bb50 = true }
+      if(withdrawal>=100){ bb100 = true }
+      if(withdrawal>=500){ bb500 = true }
+      if(withdrawal>=1000){ bb1000 = true }
+      this.event_sk({command:"accepted_bill",data:{ b20:true, b50:bb50, b100:bb100, b500:bb500, b1000:bb1000}})
+
       var test = setInterval(function() {
-        netPayment += payment 
+        netPayment += payment
+        if(withdrawal>=50){ bb50 = true }
+        if(withdrawal>=100){ bb100 = true }
+        if(withdrawal>=500){ bb500 = true }
+        if(withdrawal>=1000){ bb1000 = true }
+        this.event_sk({command:"accepted_bill",data:{ b20:true, b50:bb50, b100:bb100, b500:bb500, b1000:bb1000}})
+        
         if(r==p){
           this.event_sk({command: 'print', data: 'success'})
           clearInterval(test)
         }else{          
+          withdrawal -= netPayment
           this.event_sk({command: 'onhand', data: netPayment})
         }        
         p++;
@@ -172,13 +195,21 @@ export default {
       this.event_sk(JSON.parse(skResult.data))
     },
     event_sk (data) {
-      console.log(data)
+      console.log(JSON.stringify(data))
       switch(data.command){
           case 'onhand' : this.bill_netAmount(data.data)
+                          break
+          case 'accepted_bill' : this.set_bil(data.data)
                           break
           case 'print'  : this.payment_sucess(data.data)
                           break
         }
+    },
+    set_bil (data) {
+      if(data.b50){this.b50=true}
+      if(data.b100){this.b100=true}
+      if(data.b500){this.b500=true}
+      if(data.b1000){this.b1000=true}
     },
     Soundclick () {
       var audio = document.getElementById("audio")

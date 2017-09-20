@@ -46,10 +46,14 @@
 	    
 	    <div class="md-left">
 	    	<u>ธนบัตรที่ชำระได้ </u> <hr style="margin: 2% 5% 5% 5%; width:90%;">
-	    	<img src="../assets/money/b1000_true.png">
-	    	<img src="../assets/money/b500_true.png">
-	    	<img src="../assets/money/b100_true.png">
-	    	<img src="../assets/money/b50_true.png">
+	    	<img src="../assets/money/b1000_true.png" v-show="b1000==true">
+	    	<img src="../assets/money/b1000_false.png" v-show="b1000==false">
+	    	<img src="../assets/money/b500_true.png" v-show="b500==true">
+	    	<img src="../assets/money/b500_false.png" v-show="b500==false">
+	    	<img src="../assets/money/b100_true.png" v-show="b100==true">
+	    	<img src="../assets/money/b100_false.png" v-show="b100==false">
+	    	<img src="../assets/money/b50_true.png" v-show="b50==true">
+	    	<img src="../assets/money/b50_false.png" v-show="b50==false">
 	    	<img src="../assets/money/b20_true.png">
 	    </div>
 		<div class="md-right">

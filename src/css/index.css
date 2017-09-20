@@ -3,14 +3,35 @@
   src: url('../fonts/RSU_BOLD.ttf');
 }
 
-html, body, * {
-  font-family: 'RSU_BOLD'
+html,
+body,
+* {
+  font-family: 'RSU_BOLD';
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  user-drag: none;
+  -webkit-touch-callout: none;
+  overflow: none;
+}
+
+html {
+  overflow: hidden;
 }
 
 .navbar {
   border-bottom: 5px solid gray;
   background: #ebebe0;
-  font-family: 'RSU_BOLD'
+  font-family: 'RSU_BOLD';
+  top: 0;
+  position: fixed;
+  left: 0;
+  height: 60px;
+  width: 100%;
 }
 
 .head-left {
@@ -25,7 +46,7 @@ html, body, * {
   background: #ebebe0;
   border-radius: 0 0 50% 0%;
   left: 0;
-  top:0;
+  top: 0;
   padding: 0.2% 0.5%;
   border-bottom: 5px solid gray;
 }
@@ -44,6 +65,9 @@ html, body, * {
   position: static;
   padding-left: 5%;
   padding-right: 5%;
+  margin-top: 70px;
+  height: 500px;
+  overflow: auto;
 }
 
 .title {
@@ -89,36 +113,38 @@ html, body, * {
   border-radius: 0 0 9px 9px;
   /*border: 1px solid black;*/
 }
-  .imgitem {
-    /*border: 1px solid blue;*/
-    width: 100%;
-    height: 150px;
-    position: absolute;
-    padding: 0.5%;
-    border-radius: 0 0 9px 9px;
-  }
 
-  .imgitem img {    
-    border-radius: 0 0 9px 9px;
-  }  
+.imgitem {
+  /*border: 1px solid blue;*/
+  width: 100%;
+  height: 150px;
+  position: absolute;
+  padding: 0.5%;
+  border-radius: 0 0 9px 9px;
+}
 
-  .Nitem {
-    /*border: 1px solid red;*/
-    width: 100%;
-    height: 50px;
-    text-align: center;
-    background: #e8eaed;
-    position: absolute;
-    bottom: 0;
-    padding: 2%;
-    border-top: 0;
-    word-wrap:break-word;
-    border-radius: 0 0 9px 9px;
-  }
-    .Nitem h1 {
-      font-weight: bold;
-      font-size: 25px;
-    }
+.imgitem img {
+  border-radius: 0 0 9px 9px;
+}
+
+.Nitem {
+  /*border: 1px solid red;*/
+  width: 100%;
+  height: 50px;
+  text-align: center;
+  background: #e8eaed;
+  position: absolute;
+  bottom: 0;
+  padding: 2%;
+  border-top: 0;
+  word-wrap: break-word;
+  border-radius: 0 0 9px 9px;
+}
+
+.Nitem h1 {
+  font-weight: bold;
+  font-size: 25px;
+}
 
 .fot {
   position: fixed;
@@ -139,7 +165,7 @@ html, body, * {
 .fot .fstatus {
   width: 20%;
   float: left;
-  padding-left:2%;
+  padding-left: 2%;
 }
 
 #lang_bar {
@@ -159,12 +185,13 @@ html, body, * {
   background: #bc0d30;
   width: 90px;
   height: 90px;
-  top:0;
+  top: 0;
   border-radius: 50%;
   border: 10px double #fff;
   font-size: 90px;
   line-height: 20px;
   color: #fff;
+  cursor: pointer;
 }
 
 .setting_input {
@@ -196,11 +223,12 @@ html, body, * {
   text-align: left;
   overflow: hidden;
 }
-  .add-l h1 {
-    margin-left: 5%;
-    font-size: 30px;
-    font-weight: bold;
-  }
+
+.add-l h1 {
+  margin-left: 5%;
+  font-size: 30px;
+  font-weight: bold;
+}
 
 
 .add-r {
