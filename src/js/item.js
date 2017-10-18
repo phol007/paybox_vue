@@ -51,7 +51,7 @@ export default {
       this.$router.push({ name: "payment", params: { items: items, langID: this.langID, oldMenu: this.old_menu } })
     },
     image (name) {
-      return require('../assets/item/'+name)
+      return 'static/img/item/' + name
     },
     backHome () {
       this.$router.push('/')

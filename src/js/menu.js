@@ -31,7 +31,7 @@ export default {
           if (this.menu_datas[i].lang_id == langID) {
             var menus = this.menu_datas[i]
             for (var r = 0; r < menus.menus.length; r++) {
-              this.menu_list.push({ id: r, menu_code: menus.menus[r].Id, name: menus.menus[r].name, img: require('../assets/menu/' + menus.menus[r].image) })
+              this.menu_list.push({ id: r, menu_code: menus.menus[r].Id, name: menus.menus[r].name, img: 'static/img/menu/' + menus.menus[r].image })
             }
           }
         }     

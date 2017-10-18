@@ -5,7 +5,7 @@ import VueAxios from 'vue-axios'
 Vue.use(VueAxios, axios)
 axios.defaults.headers.post['Content-Type'] = 'application/json'
 
-const URL = 'http://localhost'
+const URL = 'http://192.168.0.97'
 // const URL = 'http://192.168.0.161'
 
 export default {
